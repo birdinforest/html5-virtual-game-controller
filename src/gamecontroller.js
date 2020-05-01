@@ -533,7 +533,7 @@
 			var halfLeftHeight = this.getPixels(dpad.left.height, 'y') / 2;
 			var halfUpWidth = this.getPixels(dpad.up.width, 'y') / 2;
 			// Up arrow
-			if( !dpad.up ) {
+			if( dpad.up ) {
 				dpad.up.x = posX - halfUpWidth;
 				dpad.up.y = posY - this.getPixels(dpad.up.height, 'y') - halfLeftHeight;
 				dpad.up.direction = 'up';
@@ -541,7 +541,7 @@
 			}
 
 			// Left arrow
-			if( !dpad.left ) {
+			if( dpad.left ) {
 				dpad.left.x = posX - this.getPixels(dpad.left.width, 'y') - halfUpWidth;
 				dpad.left.y = posY - halfLeftHeight;
 				dpad.left.direction = 'left';
@@ -549,7 +549,7 @@
 			}
 
 			// Down arrow
-			if( !dpad.down ) {
+			if( dpad.down ) {
 				dpad.down.x = posX - this.getPixels(dpad.down.width, 'y') / 2;
 				dpad.down.y = posY + halfLeftHeight;
 				dpad.down.direction = 'down';
@@ -557,7 +557,7 @@
 			}
 
 			// Right arrow
-			if( !dpad.right ) {
+			if( dpad.right ) {
 				dpad.right.x = posX + halfUpWidth;
 				dpad.right.y = posY - this.getPixels(dpad.right.height, 'y') / 2;
 				dpad.right.direction = 'right';

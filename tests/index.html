@@ -1,7 +1,7 @@
 <!Doctype html>
 <html>
 <head>
-<script src="gamecontroller.js"></script>
+<script src="../src/gamecontroller.js"></script>
 <style>
 html, body, canvas {
   margin: 0;
@@ -26,24 +26,71 @@ html, body, canvas {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
   }
-  window.addEventListener(resize);
-  resize();
+  // window.addEventListener(resize);
+  window.onresize = resize;
+  // resize();
 
   GameController.init({
     left: {
-      type: 'joystick',
+      // type: 'joystick',
+      type: 'dpad',
+      // dpad: {
+      //   up: {width: 40, height: 30, stroke: 10, opacity: 1, touchStart: () => {console.log('touch start up');}},
+      //   down: {width: 40, height: 30, stroke: 10, opacity: 1, touchStart: () => {console.log('touch start down');}},
+      //   left: {width: 40, height: 30, stroke: 10, opacity: 1, touchStart: () => {console.log('touch start left');}},
+      //   right: {width: 40, height: 30, stroke: 10, opacity: 1, touchStart: () => {console.log('touch start right');}},
+      // },
       position: {left: '15%', bottom: '15%'},
-      joystick: {
-        touchStart: function(){
-          console.log('touch starts');
+      dpad: {
+        up: {
+          width: '7%',
+          height: '15%',
+          stroke: 2,
+          touchStart: function() {
+            GameController.simulateKeyEvent( 'press', 38);
+            GameController.simulateKeyEvent( 'down', 38);
+          },
+          touchEnd: function() {
+            GameController.simulateKeyEvent( 'up', 38);
+          }
         },
-        touchEnd: function(){
-          console.log('touch ends');
+        left: {
+          width: '15%',
+          height: '7%',
+          stroke: 2,
+          touchStart: function() {
+            GameController.simulateKeyEvent( 'press', 37);
+            GameController.simulateKeyEvent( 'down', 37);
+          },
+          touchEnd: function() {
+            GameController.simulateKeyEvent( 'up', 37);
+          }
         },
-        touchMove: function(details){
-          console.log(details);
+        down: {
+          width: '7%',
+          height: '15%',
+          stroke: 2,
+          touchStart: function() {
+            GameController.simulateKeyEvent( 'press', 40);
+            GameController.simulateKeyEvent( 'down', 40);
+          },
+          touchEnd: function() {
+            GameController.simulateKeyEvent( 'up', 40);
+          }
+        },
+        right: {
+          width: '15%',
+          height: '7%',
+          stroke: 2,
+          touchStart: function() {
+            GameController.simulateKeyEvent( 'press', 39);
+            GameController.simulateKeyEvent( 'down', 39);
+          },
+          touchEnd: function() {
+            GameController.simulateKeyEvent( 'up', 39);
+          }
         }
-      }
+      },
     },
     right: {
       position: {right: '15%', bottom: '20%'},
