@@ -326,8 +326,8 @@
 			// Scale to same size as original canvas
 			var gameCanvas = GameController.options.canvas;
 			var canvas = this.options.canvas;
-			this.canvas.width = canvas.width;
-			this.canvas.height = canvas.height;
+			this.canvas.width = canvas.clientWidth || canvas.widht;
+			this.canvas.height = canvas.clientHeight || canvas.height;
 			this.offsetX = gameCanvas.offsetLeft + document.body.scrollLeft;
 			this.offsetY = gameCanvas.offsetTop + document.body.scrollTop;
 
